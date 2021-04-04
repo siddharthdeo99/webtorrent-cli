@@ -670,6 +670,8 @@ function runDownloadMeta (torrentId) {
   })
 
   torrent.on('infoHash', function () {
+    if ('select' in argv) {
+      torrent.so = argv.select.toString()
     const torrentFilePath = `${argv.out}/${this.infoHash}.torrent`
 
     if (argv.quiet) {
